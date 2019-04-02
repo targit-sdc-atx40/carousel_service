@@ -29,12 +29,14 @@ class RelatedProducts extends React.Component {
   }
 
   next() {
+    const items = this.props.relatedProducts
     if (this.animating) return;
     const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
+    const items = this.props.relatedProducts
     if (this.animating) return;
     const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
@@ -44,33 +46,24 @@ class RelatedProducts extends React.Component {
     if (this.animating) return;
     this.setState({ activeIndex: newIndex });
   }
-  
-  componentDidUpdate(prevProps) {
-    if (this.props.RelatedProducts !== prevProps.RelatedProducts) {
-    
-    }
-  }
 
 
   render() {
   const { activeIndex } = this.state;
-    componentDidUpdate(prevProps) {
-      if (this.props.RelatedProducts !== prevProps.RelatedProducts) {
-
-        const slides = this.props.RelatedProducts.map((item) => {
-          return (
-            <CarouselItem
-              onExiting={this.onExiting}
-              onExited={this.onExited}
-              key={item.src}
-            >
-              <img src={item.src} alt={item.altText} />
-              <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-            </CarouselItem>
-          );
-        });
-      }
-    }
+  const items = this.props.relatedProducts;
+    const slides = items.map((item) => {
+      return (
+        <CarouselItem
+          onExiting={this.onExiting}
+          onExited={this.onExited}
+          key={item.photo_url}
+        >
+          <img src={item.photo_url} alt={item.altText} />
+          <CarouselCaption captionText={item.price} captionHeader={item.title} />
+        </CarouselItem>
+      );
+    });
+    
 
     return (
       <Carousel

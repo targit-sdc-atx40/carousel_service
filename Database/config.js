@@ -9,10 +9,9 @@ const getProducts = (req, res) => {
       throw error
     }
     res.status(200).json(results.rows)
-  }
-
-  )
+  })
 }
+
 client.connect();
 
 module.exports = {

@@ -9,7 +9,7 @@ app.use(express.static('./dist'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/related-products', db.getProducts)
+app.get('/related-products', db.getProducts);
 
 app.listen(port, () => {
   console.log(`Silently awaiting orders on port ${port}`);
