@@ -7,8 +7,6 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
-
-
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
@@ -51,18 +49,37 @@ class RelatedProducts extends React.Component {
   render() {
   const { activeIndex } = this.state;
   const items = this.props.relatedProducts;
-    const slides = items.map((item) => {
+    // const slides = items.map((item) => {
       return (
-        <CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={item.photo_url}
-        >
-          <img src={item.photo_url} alt={item.altText} />
-          <CarouselCaption captionText={item.price} captionHeader={item.title} />
+
+        <CarouselItem>
+          <div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+              
+            </div>
+          </div>
         </CarouselItem>
+
+
+        // <CarouselItem
+        //   onExiting={this.onExiting}
+        //   onExited={this.onExited}
+        //   key={item.photo_url}
+        // >
+        //   <img src={item.photo_url} alt={item.altText} />
+        //   <CarouselCaption captionText={item.price} captionHeader={item.title} />
+        // </CarouselItem>
       );
-    });
+    }
     
 
     return (
