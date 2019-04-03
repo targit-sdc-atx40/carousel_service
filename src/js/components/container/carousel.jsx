@@ -7,6 +7,8 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
+
+
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,7 @@ class RelatedProducts extends React.Component {
     this.onExited = this.onExited.bind(this);
   }
 
+  
   onExiting() {
     this.animating = true;
   }
@@ -27,14 +30,14 @@ class RelatedProducts extends React.Component {
   }
 
   next() {
-    const items = this.props.relatedProducts
+    const items = this.props.nestedItems;
     if (this.animating) return;
     const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
-    const items = this.props.relatedProducts
+    const items = this.props.nestedItems;
     if (this.animating) return;
     const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
@@ -47,55 +50,50 @@ class RelatedProducts extends React.Component {
 
 
   render() {
-  const { activeIndex } = this.state;
-  const items = this.props.relatedProducts;
-    // const slides = items.map((item) => {
-      return (
-
-        <CarouselItem>
-          <div>
-            <div>
-
-            </div>
-            <div>
-
-            </div>
-            <div>
-
-            </div>
-            <div>
-              
-            </div>
+    const { activeIndex } = this.state;
+    const items = this.props.nestedItems;
+      const slides = items.map((item) => {
+        return (
+          <CarouselItem
+            onExiting={this.onExiting}
+            onExited={this.onExited}
+            key={item.photo_url}
+          >
+          <div class='row'>
+            {item.map((container) => {
+              return (
+                <div class="col-md-2">
+                  <button>
+                    <img src={container.photo_url} style={{maxWidth: '50%'}}/>
+                    <p>{container.price}</p>
+                    <p>{container.title}</p>
+                  </button>
+                </div>
+              )
+            })}
           </div>
-        </CarouselItem>
 
+            {/* <img className="d-block w-100" src={item.photo_url} alt={item.altText} />
+            <CarouselCaption captionText={item.price} captionHeader={item.title} /> */}
 
-        // <CarouselItem
-        //   onExiting={this.onExiting}
-        //   onExited={this.onExited}
-        //   key={item.photo_url}
-        // >
-        //   <img src={item.photo_url} alt={item.altText} />
-        //   <CarouselCaption captionText={item.price} captionHeader={item.title} />
-        // </CarouselItem>
+          </CarouselItem>
+        );
+      });
+      
+  
+      return (
+        <Carousel
+          activeIndex={activeIndex}
+          next={this.next}
+          previous={this.previous}
+        >
+          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+          {slides}
+          <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+        </Carousel>
       );
     }
-    
-
-    return (
-      <Carousel
-        activeIndex={activeIndex}
-        next={this.next}
-        previous={this.previous}
-      >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-      </Carousel>
-    );
   }
-}
-
-
+  
 export default RelatedProducts;
