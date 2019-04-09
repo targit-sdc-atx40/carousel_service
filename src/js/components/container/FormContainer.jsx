@@ -70,8 +70,10 @@ class FormContainer extends Component {
     };
   }
 
+
+
   componentDidMount() {
-    axios.get('related-products')
+    axios.get('http://localhost:3003/related-products')
     .then(res => {
       const relatedProducts = res.data;
       this.setState({
@@ -116,5 +118,5 @@ class FormContainer extends Component {
 }
 export default FormContainer;
 
-const wrapper = document.getElementById("root");
+const wrapper = document.getElementById("carousel");
 wrapper ? ReactDOM.render(<FormContainer />, wrapper) : false;

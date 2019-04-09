@@ -19,7 +19,6 @@ class RelatedProducts extends React.Component {
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
   }
-
   
   onExiting() {
     this.animating = true;
@@ -59,23 +58,19 @@ class RelatedProducts extends React.Component {
             onExited={this.onExited}
             key={item.photo_url}
           >
-          <div class='row'>
-            {item.map((container) => {
-              return (
-                <div class="col-md-2">
-                  <button>
-                    <img src={container.photo_url} style={{maxWidth: '50%'}}/>
-                    <p>{container.price}</p>
-                    <p>{container.title}</p>
-                  </button>
-                </div>
-              )
-            })}
-          </div>
-
-            {/* <img className="d-block w-100" src={item.photo_url} alt={item.altText} />
-            <CarouselCaption captionText={item.price} captionHeader={item.title} /> */}
-
+            <div class='row'>
+              {item.map((container) => {
+                return (
+                  <div class="col-md-2">
+                    <button>
+                      <img src={container.photo_url} style={{maxWidth: '50%', maxHeight: '30%'}}/>
+                      <p>{container.price}</p>
+                      <p>{container.title}</p>
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
           </CarouselItem>
         );
       });
