@@ -61,12 +61,10 @@ class RelatedProducts extends React.Component {
             <div class='row'>
               {item.map((container) => {
                 return (
-                  <div class="col-md-2">
-                    <button>
-                      <img src={container.photo_url} style={{maxWidth: '50%', maxHeight: '30%'}}/>
-                      <p>{container.price}</p>
-                      <p>{container.title}</p>
-                    </button>
+                  <div class="col-md-2" onClick={() => {(window.State = container.sku); window.Info.updateCurrentProduct(); window.reviews.updateCurrentReviews();}}>
+                    <img src={container.photo_url} style={{maxWidth: '50%', maxHeight: '30%'}}/>
+                    <p>{container.price}</p>
+                    <p>{container.title}</p>
                   </div>
                 )
               })}
