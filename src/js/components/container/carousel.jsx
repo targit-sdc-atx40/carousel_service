@@ -62,7 +62,7 @@ class RelatedProducts extends React.Component {
               {item.map((container) => {
                 return (
                   <div class="col-md-2" onClick={() => {(window.State = container.sku); window.Info.updateCurrentProduct(); window.reviews.updateCurrentReviews();}}>
-                    <img src={container.photo_url} style={{maxWidth: '50%', maxHeight: '30%'}}/>
+                    <img src={container.photo_url} style={{ maxHeight: '75px', maxWidth: '125px', display: 'flex'}}/>
                     <p>{container.price}</p>
                     <p>{container.title}</p>
                   </div>
@@ -82,8 +82,9 @@ class RelatedProducts extends React.Component {
         >
           <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
           {slides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+          
+          {/* <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} /> */}
         </Carousel>
       );
     }
