@@ -73,7 +73,7 @@ class FormContainer extends Component {
 
 
   componentDidMount() {
-    axios.get('http://localhost:3003/related-products')
+    axios.get('http://ec2-18-221-92-39.us-east-2.compute.amazonaws.com/related-products')
     .then(res => {
       const relatedProducts = res.data;
       this.setState({
