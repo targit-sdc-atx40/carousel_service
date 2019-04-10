@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS related_products;
+-- DROP DATABASE IF EXISTS related_products;
 
-CREATE DATABASE related_products;
+-- CREATE DATABASE related_products;
 
-\C related_products;
+-- \C related_products;
 
 CREATE TABLE IF NOT EXISTS carousel (
   sku SERIAL,

@@ -1,7 +1,11 @@
 const {Client} = require('pg');
 const client = new Client({
-  database: 'related_products'
-});
+  host: 'relatedproducts.cz85drywbdns.us-east-2.rds.amazonaws.com',
+  port: 5432,
+  user: 'dlockliear',
+  database: 'related_products',
+  password: 'password'
+})
 
 const getProducts = (req, res) => {
   client.query('SELECT * FROM carousel', (error, results) => {
