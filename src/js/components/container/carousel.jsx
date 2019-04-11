@@ -6,7 +6,10 @@ import {
   CarouselIndicators
 } from 'reactstrap';
 
-
+const changeItem = (sku) => {
+  const event = new CustomEvent('changeItem', { detail: sku });
+  window.dispatchEvent(event);
+};
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -60,7 +63,7 @@ class RelatedProducts extends React.Component {
             <div class='row'>
               {item.map((container) => {
                 return (
-                  <div style={{fontFamily: 'Helvetica', fontSize: '16px'}} class="col-md-2" onClick={() => {(window.State = container.sku); window.Info.updateCurrentProduct(); window.reviews.updateCurrentReviews();}}>
+                  <div style={{fontFamily: 'Helvetica', fontSize: '16px'}} class="col-md-2" onClick={() => {changeItem(container.sku)}}>
                     <div style={{minHeight: '100px', minWidth: '125px', margin: '0px'}}>
                       <img src={container.photo_url} style={{ maxHeight: '75px', maxWidth: '125px', display: 'flex', margin: '0px'}}/>
                     </div>
@@ -87,8 +90,22 @@ class RelatedProducts extends React.Component {
             onClickHandler={this.goToIndex} />
             {slides}
           </Carousel>
-          <button style={{backgroundColor:'rgb(204, 0, 0)', color: 'white', fontFamily: 'Helvetica'}} onClick={this.previous}>prev</button>
-          <button style={{backgroundColor:'rgb(204, 0, 0)', color: 'white', fontFamily: 'Helvetica'}} onClick={this.next}>next</button>
+          <button 
+          style={{
+            backgroundColor:'rgb(204, 0, 0)', 
+            color: 'white', 
+            fontFamily: 'Helvetica',
+            border: 'none'
+          }} 
+          onClick={this.previous}>prev</button>
+          <button 
+          style={{
+            backgroundColor:'rgb(204, 0, 0)', 
+            color: 'white', 
+            fontFamily: 'Helvetica',
+            border: 'none'
+            }} 
+          onClick={this.next}>next</button>
         </div>
       );
     }
