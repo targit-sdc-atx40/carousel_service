@@ -61,7 +61,9 @@ class RelatedProducts extends React.Component {
               {item.map((container) => {
                 return (
                   <div style={{fontFamily: 'Helvetica', fontSize: '16px'}} class="col-md-2" onClick={() => {(window.State = container.sku); window.Info.updateCurrentProduct(); window.reviews.updateCurrentReviews();}}>
-                    <img src={container.photo_url} style={{ maxHeight: '75px', maxWidth: '125px', display: 'flex'}}/>
+                    <div style={{minHeight: '100px', minWidth: '125px'}}>
+                      <img src={container.photo_url} style={{ maxHeight: '75px', maxWidth: '125px', display: 'flex'}}/>
+                    </div>
                     <p style={{color: 'rgb(204, 0, 0)', fontWeight: 'bold', fontSize: '19px',}}>{container.price}</p>
                     <p>{container.title}</p>
                   </div>
