@@ -110,6 +110,7 @@ class FormContainer extends Component {
       <div>
         <center>
           <h2>Related Products</h2>
+          <h1>HIII DREW</h1>
           <RelatedProductsCarousel relatedProducts={this.state.items} nestedItems={this.state.nestedItems}/>
         </center>
       </div>
