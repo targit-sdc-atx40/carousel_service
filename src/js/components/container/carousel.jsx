@@ -62,12 +62,12 @@ class RelatedProducts extends React.Component {
                 return (
                   <div class="col-md-2" onClick={() => {(window.State = container.sku); window.Info.updateCurrentProduct(); window.reviews.updateCurrentReviews();}}>
                     <img src={container.photo_url} style={{ maxHeight: '75px', maxWidth: '125px', display: 'flex'}}/>
-                    <p>{container.price}</p>
+                    <p style={{color: 'rgb(204, 0, 0)', fontWeight: 'bold'}}>{container.price}</p>
                     <p>{container.title}</p>
                   </div>
                 )
               })}
-            </div>
+            </div> 
           </CarouselItem>
         );
       });

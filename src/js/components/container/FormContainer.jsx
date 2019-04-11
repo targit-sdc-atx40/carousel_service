@@ -109,7 +109,7 @@ class FormContainer extends Component {
     return (
       <div>
         <center>
-          <h2>Related Products</h2>
+          <h2>Recommended</h2>
           <RelatedProductsCarousel relatedProducts={this.state.items} nestedItems={this.state.nestedItems}/>
         </center>
       </div>
