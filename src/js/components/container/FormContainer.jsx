@@ -26,25 +26,13 @@ class FormContainer extends Component {
       this.setState({
         items: relatedProducts
       })
+      
       const bigArr = [];
-      bigArr.push(relatedProducts.slice(0, 6));
-      bigArr.push(relatedProducts.slice(6, 12));
-      bigArr.push(relatedProducts.slice(12, 18));
-      bigArr.push(relatedProducts.slice(18, 24));
-      bigArr.push(relatedProducts.slice(24, 30));
-      bigArr.push(relatedProducts.slice(30, 36));
-      bigArr.push(relatedProducts.slice(36, 42));
-      bigArr.push(relatedProducts.slice(42, 48));
-      bigArr.push(relatedProducts.slice(48, 54));
-      bigArr.push(relatedProducts.slice(54, 60));
-      bigArr.push(relatedProducts.slice(60, 66));
-      bigArr.push(relatedProducts.slice(66, 72));
-      bigArr.push(relatedProducts.slice(72, 78));
-      bigArr.push(relatedProducts.slice(78, 84));
-      bigArr.push(relatedProducts.slice(84, 90));
-      bigArr.push(relatedProducts.slice(90, 96));
-      bigArr.push(relatedProducts.slice(96, 100));
 
+      for (let i = 0; i < relatedProducts.length; i += 6) {
+        bigArr.push(relatedProducts.slice(i, i + 6));
+      }
+      
       this.setState({
         nestedItems: bigArr
       })

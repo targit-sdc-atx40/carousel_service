@@ -87,8 +87,8 @@ class RelatedProducts extends React.Component {
             onClickHandler={this.goToIndex} />
             {slides}
           </Carousel>
-          <button onClick={this.previous}>prev</button>
-          <button onClick={this.next}>next</button>
+          <button style={{backgroundColor:'rgb(204, 0, 0)', color: 'white', fontFamily: 'Helvetica'}} onClick={this.previous}>prev</button>
+          <button style={{backgroundColor:'rgb(204, 0, 0)', color: 'white', fontFamily: 'Helvetica'}} onClick={this.next}>next</button>
         </div>
       );
     }
