@@ -81,17 +81,12 @@ class RelatedProducts extends React.Component {
             activeIndex={activeIndex}
             next={this.next}
             previous={this.previous}
-          >
-            <CarouselIndicators 
+          ><CarouselIndicators 
             items={items} 
             activeIndex={activeIndex} 
             onClickHandler={this.goToIndex} />
             {slides}
-            
-            {/* <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-            <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} /> */}
           </Carousel>
-  
           <button onClick={this.previous}>prev</button>
           <button onClick={this.next}>next</button>
         </div>
