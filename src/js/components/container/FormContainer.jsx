@@ -44,7 +44,7 @@ class FormContainer extends Component {
     return (
       <div>
         <center>
-          <h2 style={{fontFamily: 'Helvetica'}}>Recommended</h2>
+          <h3 style={{fontFamily: 'HelveticaNeue', fontSize: '23px', fontWeight: 'bold', color: 'rgb(51, 51, 51)', lineHeight: '1.25'}}>Recommended</h3>
           <RelatedProductsCarousel relatedProducts={this.state.items} nestedItems={this.state.nestedItems}/>
         </center>
       </div>

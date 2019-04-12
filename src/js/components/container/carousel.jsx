@@ -59,12 +59,12 @@ class RelatedProducts extends React.Component {
             <div class='row'>
               {item.map((container) => {
                 return (
-                  <div style={{fontFamily: 'Helvetica', fontSize: '16px'}} class="col-md-2" onClick={() => {changeItem(container.sku)}}>
+                  <div style={{fontFamily: 'HelveticaNeue', fontSize: '16px'}} class="col-md-2" onClick={() => {changeItem(container.sku)}}>
                     <div style={{minHeight: '100px', minWidth: '125px', margin: '0px'}}>
                       <img src={container.photo_url} style={{ maxHeight: '75px', maxWidth: '125px', display: 'flex', margin: '0px'}}/>
                     </div>
-                    <p style={{color: 'rgb(204, 0, 0)', fontWeight: 'bold', fontSize: '19px', margin: '0px'}}>{container.price}</p>
-                    <p style={{margin: '0px'}}>{container.title}</p>
+                    <p style={{color: 'rgb(204, 0, 0)', fontWeight: 'bold', fontSize: '16px', margin: '0px', lineHeight: '1.4285'}}>{container.price}</p>
+                    <p style={{margin: '0px', color: 'rgb(51, 51, 51)', fontSize: '16px', fontFamily: 'HelveticaNeue', lineHeight: '1.4285'}}>{container.title}</p>
                   </div>
                 ) 
               })}
@@ -91,7 +91,8 @@ class RelatedProducts extends React.Component {
             backgroundColor:'rgb(204, 0, 0)', 
             color: 'white', 
             fontFamily: 'Helvetica',
-            border: 'none'
+            border: 'none',
+            float: "left"
           }} 
           onClick={this.previous}>prev</button>
           <button 
@@ -99,7 +100,8 @@ class RelatedProducts extends React.Component {
             backgroundColor:'rgb(204, 0, 0)', 
             color: 'white', 
             fontFamily: 'Helvetica',
-            border: 'none'
+            border: 'none',
+            float: 'right',
             }} 
           onClick={this.next}>next</button>
         </div>
