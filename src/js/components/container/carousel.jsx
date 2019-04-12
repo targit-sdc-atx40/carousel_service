@@ -6,10 +6,6 @@ import {
   CarouselIndicators
 } from 'reactstrap';
 
-const changeItem = (sku) => {
-  const event = new CustomEvent('changeItem', { detail: sku });
-  window.dispatchEvent(event);
-};
 
 class RelatedProducts extends React.Component {
   constructor(props) {
