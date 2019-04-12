@@ -75,36 +75,48 @@ class RelatedProducts extends React.Component {
       
   
       return (
-        <div>
-          <Carousel
-            activeIndex={activeIndex}
-            next={this.next}
-            previous={this.previous}
-          ><CarouselIndicators 
-            items={items} 
-            activeIndex={activeIndex} 
-            onClickHandler={this.goToIndex} />
-            {slides}
-          </Carousel>
+        <>
+          <div style={{margin: '0px', display: 'table'}}>
           <button 
-          style={{
-            backgroundColor:'rgb(204, 0, 0)', 
-            color: 'white', 
-            fontFamily: 'Helvetica',
-            border: 'none',
-            float: "left"
-          }} 
-          onClick={this.previous}>prev</button>
-          <button 
-          style={{
-            backgroundColor:'rgb(204, 0, 0)', 
-            color: 'white', 
-            fontFamily: 'Helvetica',
-            border: 'none',
-            float: 'right',
+            style={{
+              backgroundColor:'rgb(204, 0, 0)', 
+              color: 'white', 
+              fontFamily: 'Helvetica',
+              border: 'none',
+              textAlign: 'left',
+              display: 'table-cell',
+              verticalAlign: 'middle'
             }} 
-          onClick={this.next}>next</button>
-        </div>
+            onClick={this.previous}>prev</button>
+          <div style={{margin: '100px', display: 'table-cell'}}>
+            <Carousel
+              style={{display: 'table-cell'}}
+              activeIndex={activeIndex}
+              next={this.next}
+              previous={this.previous}
+            >
+            <CarouselIndicators 
+              items={items} 
+              activeIndex={activeIndex} 
+              onClickHandler={this.goToIndex} />
+              {slides}
+            </Carousel>
+          </div>
+
+            
+            <button 
+            style={{
+              backgroundColor:'rgb(204, 0, 0)', 
+              color: 'white', 
+              fontFamily: 'Helvetica',
+              border: 'none',
+              float: 'right',
+              display: 'table-cell',
+              verticalAlign: 'middle'
+              }} 
+            onClick={this.next}>next</button>
+          </div>
+        </>
       );
     }
   }
