@@ -60,11 +60,11 @@ class RelatedProducts extends React.Component {
               {item.map((container) => {
                 return (
                   <div style={{fontFamily: 'HelveticaNeue', fontSize: '16px'}} class="col-md-2" onClick={() => {changeItem(container.sku)}}>
-                    <div style={{minHeight: '100px', minWidth: '125px', margin: '0px'}}>
-                      <img src={container.photo_url} style={{ maxHeight: '75px', maxWidth: '125px', display: 'flex', margin: '0px'}}/>
+                    <div style={{}}>
+                      <img src={container.photo_url} style={{ height: '100px', width: '125px'}}/>
                     </div>
                     <p style={{color: 'rgb(204, 0, 0)', fontWeight: 'bold', fontSize: '16px', margin: '0px', lineHeight: '1.4285'}}>{container.price}</p>
-                    <p style={{margin: '0px', color: 'rgb(51, 51, 51)', fontSize: '16px', fontFamily: 'HelveticaNeue', lineHeight: '1.4285'}}>{container.title}</p>
+                    <p style={{minHeight: '35px', margin: '0px', color: 'rgb(51, 51, 51)', fontSize: '16px', fontFamily: 'HelveticaNeue', lineHeight: '1.4285'}}>{container.title}</p>
                   </div>
                 ) 
               })}
@@ -81,6 +81,7 @@ class RelatedProducts extends React.Component {
             style={{
               backgroundColor:'rgb(204, 0, 0)', 
               color: 'white', 
+              borderRadius: '4px',
               fontFamily: 'Helvetica',
               border: 'none',
               textAlign: 'left',
@@ -108,6 +109,7 @@ class RelatedProducts extends React.Component {
             style={{
               backgroundColor:'rgb(204, 0, 0)', 
               color: 'white', 
+              borderRadius: '4px',
               fontFamily: 'Helvetica',
               border: 'none',
               float: 'right',
