@@ -103,8 +103,6 @@ class RelatedProducts extends React.Component {
               {slides}
             </Carousel>
           </div>
-
-            
             <button 
             style={{
               backgroundColor:'rgb(204, 0, 0)', 
@@ -112,7 +110,7 @@ class RelatedProducts extends React.Component {
               borderRadius: '4px',
               fontFamily: 'Helvetica',
               border: 'none',
-              float: 'right',
+              textAlign: 'right',
               display: 'table-cell',
               verticalAlign: 'middle'
               }} 
