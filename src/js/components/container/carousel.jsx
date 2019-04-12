@@ -64,7 +64,7 @@ class RelatedProducts extends React.Component {
                       <img src={container.photo_url} style={{ height: '100px', width: '125px'}}/>
                     </div>
                     <p style={{color: 'rgb(204, 0, 0)', fontWeight: 'bold', fontSize: '16px', margin: '0px', lineHeight: '1.4285'}}>{container.price}</p>
-                    <p style={{minHeight: '35px', margin: '0px', color: 'rgb(51, 51, 51)', fontSize: '16px', fontFamily: 'HelveticaNeue', lineHeight: '1.4285'}}>{container.title}</p>
+                    <p style={{height: '50px', margin: '0px', color: 'rgb(51, 51, 51)', fontSize: '16px', fontFamily: 'HelveticaNeue', lineHeight: '1.4285'}}>{container.title}</p>
                   </div>
                 ) 
               })}
