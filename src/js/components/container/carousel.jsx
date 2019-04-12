@@ -88,7 +88,7 @@ class RelatedProducts extends React.Component {
               verticalAlign: 'middle'
             }} 
             onClick={this.previous}>prev</button>
-          <div style={{margin: '100px', display: 'table-cell'}}>
+          <div style={{ display: 'table-cell', minWidth: '1000px'}}>
             <Carousel
               style={{display: 'table-cell'}}
               activeIndex={activeIndex}
