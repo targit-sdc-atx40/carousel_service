@@ -85,7 +85,7 @@ class RelatedProducts extends React.Component {
       return (
         <div>
           <div style={{margin: '0px', display: 'table'}}>
-            <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', display: 'table-cell', verticalAlign: 'middle', textAlign: 'left',}}
+            <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle'}}
               onClick={this.previous}>
             </FontAwesomeIcon>
             <div style={{ display: 'table-cell', minWidth: '1000px'}}>
@@ -98,8 +98,8 @@ class RelatedProducts extends React.Component {
                 {slides}
               </Carousel>
             </div>
-            <FontAwesomeIcon icon={faAngleRight} size='3x'style={{color: 'rgb(204, 0, 0)',display: 'table-cell', verticalAlign: 'middle', textAlign: 'right',}}
-              onClick={this.previous}>
+            <FontAwesomeIcon icon={faAngleRight} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle'}}
+              onClick={this.next}>
             </FontAwesomeIcon>
           </div>
           {navDots}
