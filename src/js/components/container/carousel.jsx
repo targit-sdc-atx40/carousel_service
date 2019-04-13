@@ -5,7 +5,7 @@ import {
   CarouselControl,
   CarouselIndicators
 } from 'reactstrap';
-import { faHome, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faAngleLeft, faAngleRight, faCircle, faDotCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class RelatedProducts extends React.Component {
@@ -50,10 +50,17 @@ class RelatedProducts extends React.Component {
   render() {
     const { activeIndex } = this.state;
     const items = this.props.nestedItems;
-      const navDots = items.map((item) => {
+    const carouselNav = [];
+    for (let i = 0; i < items.length; i++) {
+      let indexObj = {index: i}
+      carouselNav.push(indexObj);
+    }
+      const navDots = carouselNav.map((item) => {
         return (
           <>
-            <button>test</button>
+            <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
+            onClick={() => this.goToIndex(item.index)}
+            />
           </>
         )
       })
