@@ -5,6 +5,8 @@ import {
   CarouselControl,
   CarouselIndicators
 } from 'reactstrap';
+import { faHome, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -83,40 +85,22 @@ class RelatedProducts extends React.Component {
       return (
         <div>
           <div style={{margin: '0px', display: 'table'}}>
-          <button 
-            style={{
-              backgroundColor:'rgb(204, 0, 0)', 
-              color: 'white', 
-              borderRadius: '4px',
-              fontFamily: 'Helvetica',
-              border: 'none',
-              textAlign: 'left',
-              display: 'table-cell',
-              verticalAlign: 'middle'
-            }} 
-            onClick={this.previous}>prev</button>
-          <div style={{ display: 'table-cell', minWidth: '1000px'}}>
-            <Carousel
-              style={{display: 'table-cell'}}
-              activeIndex={activeIndex}
-              next={this.next}
-              previous={this.previous}
-            > 
-              {slides}
-            </Carousel>
-          </div>
-            <button 
-            style={{
-              backgroundColor:'rgb(204, 0, 0)', 
-              color: 'white', 
-              borderRadius: '4px',
-              fontFamily: 'Helvetica',
-              border: 'none',
-              textAlign: 'right',
-              display: 'table-cell',
-              verticalAlign: 'middle',
-              }} 
-            onClick={this.next}>next</button>
+            <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', display: 'table-cell', verticalAlign: 'middle', textAlign: 'left',}}
+              onClick={this.previous}>
+            </FontAwesomeIcon>
+            <div style={{ display: 'table-cell', minWidth: '1000px'}}>
+              <Carousel
+                style={{display: 'table-cell'}}
+                activeIndex={activeIndex}
+                next={this.next}
+                previous={this.previous}
+              > 
+                {slides}
+              </Carousel>
+            </div>
+            <FontAwesomeIcon icon={faAngleRight} size='3x'style={{color: 'rgb(204, 0, 0)',display: 'table-cell', verticalAlign: 'middle', textAlign: 'right',}}
+              onClick={this.previous}>
+            </FontAwesomeIcon>
           </div>
           {navDots}
         </div>
