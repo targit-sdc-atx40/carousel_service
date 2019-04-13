@@ -51,19 +51,6 @@ class RelatedProducts extends React.Component {
     const { activeIndex } = this.state;
     const items = this.props.nestedItems;
     const carouselNav = [];
-    for (let i = 0; i < items.length; i++) {
-      let indexObj = {index: i}
-      carouselNav.push(indexObj);
-    }
-      const navDots = carouselNav.map((item) => {
-        return (
-          <>
-            <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
-            onClick={() => this.goToIndex(item.index)}
-            />
-          </>
-        )
-      })
       const slides = items.map((item) => {
         return (
           <CarouselItem
@@ -109,7 +96,30 @@ class RelatedProducts extends React.Component {
               onClick={this.next}>
             </FontAwesomeIcon>
           </div>
-          {navDots}
+          <center>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <div>
+                <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
+                onClick={() => this.goToIndex(0)}
+                style={{verticalAlign: 'top'}}
+                />
+              </div>
+
+              <div>
+                <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
+                onClick={() => this.goToIndex(8)}
+                style={{verticalAlign: 'top'}}
+                />
+              </div>
+
+              <div>
+                <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
+                onClick={() => this.goToIndex(16)}
+                style={{verticalAlign: 'top'}}
+                />
+              </div>
+            </div>
+          </center>
         </div>
       );
     }
