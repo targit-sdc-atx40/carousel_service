@@ -101,21 +101,21 @@ class RelatedProducts extends React.Component {
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
                 onClick={() => this.goToIndex(0)}
-                style={{verticalAlign: 'top'}}
+                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: '.6'}}
                 />
               </div>
 
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
                 onClick={() => this.goToIndex(8)}
-                style={{verticalAlign: 'top'}}
+                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: '.6'}}
                 />
               </div>
 
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
                 onClick={() => this.goToIndex(16)}
-                style={{verticalAlign: 'top'}}
+                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: '.6'}}
                 />
               </div>
             </div>
