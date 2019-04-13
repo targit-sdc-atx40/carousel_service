@@ -6,7 +6,6 @@ import {
   CarouselIndicators
 } from 'reactstrap';
 
-
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
@@ -49,6 +48,13 @@ class RelatedProducts extends React.Component {
   render() {
     const { activeIndex } = this.state;
     const items = this.props.nestedItems;
+      const navDots = items.map((item) => {
+        return (
+          <>
+            <button>test</button>
+          </>
+        )
+      })
       const slides = items.map((item) => {
         return (
           <CarouselItem
@@ -75,7 +81,7 @@ class RelatedProducts extends React.Component {
       
   
       return (
-        <>
+        <div>
           <div style={{margin: '0px', display: 'table'}}>
           <button 
             style={{
@@ -95,11 +101,7 @@ class RelatedProducts extends React.Component {
               activeIndex={activeIndex}
               next={this.next}
               previous={this.previous}
-            >
-            <CarouselIndicators 
-              items={items} 
-              activeIndex={activeIndex} 
-              onClickHandler={this.goToIndex} />
+            > 
               {slides}
             </Carousel>
           </div>
@@ -112,11 +114,12 @@ class RelatedProducts extends React.Component {
               border: 'none',
               textAlign: 'right',
               display: 'table-cell',
-              verticalAlign: 'middle'
+              verticalAlign: 'middle',
               }} 
             onClick={this.next}>next</button>
           </div>
-        </>
+          {navDots}
+        </div>
       );
     }
   }
