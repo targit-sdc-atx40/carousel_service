@@ -11,12 +11,47 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0 };
+    this.state = { 
+      activeIndex: 0,
+      navLeft: '.60',
+      navMiddle: '.60',
+      navRight: '.60'
+    };
+
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
+
+    this.changeOpacityLeft = this.changeOpacityLeft.bind(this);
+    this.changeOpacityMiddle = this.changeOpacityMiddle.bind(this);
+    this.changeOpacityRight = this.changeOpacityRight.bind(this);
+
+  }
+
+  changeOpacityLeft(e) {
+    this.setState({
+      navLeft : '1',
+      navMiddle : '.60',
+      navRight : '.60'
+    })
+  }
+
+  changeOpacityMiddle(e) {
+    this.setState({
+      navLeft : '.60',
+      navMiddle : '1',
+      navRight : '.60'
+    })
+  }
+
+  changeOpacityRight(e) {
+    this.setState({
+      navLeft : '.60',
+      navMiddle : '.60',
+      navRight : '1'
+    })
   }
   
   onExiting() {
@@ -82,7 +117,7 @@ class RelatedProducts extends React.Component {
             <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle', opacity: '.6'}}
               onClick={this.previous}>
             </FontAwesomeIcon>
-            <div style={{ display: 'table-cell', minWidth: '1000px'}}>
+            <div style={{ display: 'table-cell', minWidth: '960px'}}>
               <Carousel
                 style={{display: 'table-cell'}}
                 activeIndex={activeIndex}
@@ -100,22 +135,22 @@ class RelatedProducts extends React.Component {
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
-                onClick={() => this.goToIndex(0)}
-                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: '.6'}}
+                onClick={() =>  {this.goToIndex(0); this.changeOpacityLeft();}}
+                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: this.state.navLeft}}
                 />
               </div>
 
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
-                onClick={() => this.goToIndex(8)}
-                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: '.6'}}
+                onClick={() => {this.goToIndex(8); this.changeOpacityMiddle();}}
+                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: this.state.navMiddle}}
                 />
               </div>
 
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
-                onClick={() => this.goToIndex(16)}
-                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: '.6'}}
+                onClick={() => {this.goToIndex(16); this.changeOpacityRight();}}
+                style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: this.state.navRight}}
                 />
               </div>
             </div>

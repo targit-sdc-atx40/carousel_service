@@ -16,9 +16,10 @@ class FormContainer extends Component {
           title: ''
         }
       ],
-      nestedItems: nestedItemsData
+      nestedItems: nestedItemsData,
     };
   }
+  
 
   componentDidMount() {
     axios.get('http://ec2-18-221-92-39.us-east-2.compute.amazonaws.com:3004/related-products')
