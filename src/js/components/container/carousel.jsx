@@ -85,7 +85,7 @@ class RelatedProducts extends React.Component {
       return (
         <div>
           <div style={{margin: '0px', display: 'table'}}>
-            <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle'}}
+            <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle', opacity: '.6'}}
               onClick={this.previous}>
             </FontAwesomeIcon>
             <div style={{ display: 'table-cell', minWidth: '1000px'}}>
@@ -98,7 +98,7 @@ class RelatedProducts extends React.Component {
                 {slides}
               </Carousel>
             </div>
-            <FontAwesomeIcon icon={faAngleRight} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle'}}
+            <FontAwesomeIcon icon={faAngleRight} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle', opacity: '.6'}}
               onClick={this.next}>
             </FontAwesomeIcon>
           </div>
