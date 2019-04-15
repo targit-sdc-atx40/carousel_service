@@ -44,7 +44,7 @@ class RelatedProducts extends React.Component {
           this.setState({leftArrow: '.60'});
       }
       .bind(this),
-      400
+      600
     );
   }
 
@@ -57,7 +57,7 @@ class RelatedProducts extends React.Component {
           this.setState({rightArrow: '.60'});
       }
       .bind(this),
-      400
+      600
     );
   }
 
