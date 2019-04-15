@@ -147,12 +147,12 @@ class RelatedProducts extends React.Component {
       
   
       return (
-        <div>
+        <div style={{width: '90%', minWidth: '20em'}}>
           <div style={{margin: '0px', display: 'table'}}>
             <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle', opacity: this.state.leftArrow}}
               onClick={ () => {this.previous(); this.handleArrowLeft()}}>
             </FontAwesomeIcon>
-            <div style={{ display: 'table-cell', width: '90%', minWidth: '20em'}}>
+            <div style={{ display: 'table-cell', width: '100%'}}>
               <Carousel
                 style={{display: 'table-cell'}}
                 activeIndex={activeIndex}
