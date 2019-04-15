@@ -15,7 +15,9 @@ class RelatedProducts extends React.Component {
       activeIndex: 0,
       navLeft: '.60',
       navMiddle: '.60',
-      navRight: '.60'
+      navRight: '.60',
+      leftArrow: '.60',
+      rightArrow: '.60'
     };
 
     this.next = this.next.bind(this);
@@ -27,7 +29,36 @@ class RelatedProducts extends React.Component {
     this.changeOpacityLeft = this.changeOpacityLeft.bind(this);
     this.changeOpacityMiddle = this.changeOpacityMiddle.bind(this);
     this.changeOpacityRight = this.changeOpacityRight.bind(this);
+    this.goToIndexNoAnimation = this.goToIndexNoAnimation.bind(this);
+    this.handleArrowLeft = this.handleArrowLeft.bind(this);
+    this.handleArrowRight = this.handleArrowRight.bind(this);
 
+  }
+
+  handleArrowLeft(e) {
+    this.setState({
+      leftArrow: '1'
+    })
+    setTimeout(
+      function() {
+          this.setState({leftArrow: '.60'});
+      }
+      .bind(this),
+      400
+    );
+  }
+
+  handleArrowRight(e) {
+    this.setState({
+      rightArrow: '1'
+    })
+    setTimeout(
+      function() {
+          this.setState({rightArrow: '.60'});
+      }
+      .bind(this),
+      400
+    );
   }
 
   changeOpacityLeft(e) {
@@ -81,6 +112,10 @@ class RelatedProducts extends React.Component {
     this.setState({ activeIndex: newIndex });
   }
 
+  goToIndexNoAnimation(i) {
+    this.setState({ activeIndex: i });
+  }
+
 
   render() {
     const { activeIndex } = this.state;
@@ -114,10 +149,10 @@ class RelatedProducts extends React.Component {
       return (
         <div>
           <div style={{margin: '0px', display: 'table'}}>
-            <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle', opacity: '.6'}}
-              onClick={this.previous}>
+            <FontAwesomeIcon icon={faAngleLeft} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle', opacity: this.state.leftArrow}}
+              onClick={ () => {this.previous(); this.handleArrowLeft()}}>
             </FontAwesomeIcon>
-            <div style={{ display: 'table-cell', minWidth: '960px'}}>
+            <div style={{ display: 'table-cell', width: '100%', minWidth: '20em'}}>
               <Carousel
                 style={{display: 'table-cell'}}
                 activeIndex={activeIndex}
@@ -127,29 +162,29 @@ class RelatedProducts extends React.Component {
                 {slides}
               </Carousel>
             </div>
-            <FontAwesomeIcon icon={faAngleRight} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle', opacity: '.6'}}
-              onClick={this.next}>
+            <FontAwesomeIcon icon={faAngleRight} size='3x'style={{color: 'rgb(204, 0, 0)', verticalAlign: 'middle', opacity: this.state.rightArrow}}
+              onClick={() => {this.next(); this.handleArrowRight();}}>
             </FontAwesomeIcon>
           </div>
           <center>
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
-                onClick={() =>  {this.goToIndex(0); this.changeOpacityLeft();}}
+                onClick={() =>  {this.goToIndexNoAnimation(0); this.changeOpacityLeft();}}
                 style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: this.state.navLeft}}
                 />
               </div>
 
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
-                onClick={() => {this.goToIndex(8); this.changeOpacityMiddle();}}
+                onClick={() => {this.goToIndexNoAnimation(8); this.changeOpacityMiddle();}}
                 style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: this.state.navMiddle}}
                 />
               </div>
 
               <div>
                 <FontAwesomeIcon icon={faDotCircle} color= 'rgb(204, 0, 0)'
-                onClick={() => {this.goToIndex(16); this.changeOpacityRight();}}
+                onClick={() => {this.goToIndexNoAnimation(16); this.changeOpacityRight();}}
                 style={{verticalAlign: 'top', marginLeft: '5px', marginRight: '5px', opacity: this.state.navRight}}
                 />
               </div>
