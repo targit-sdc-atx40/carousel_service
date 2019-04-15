@@ -32,7 +32,36 @@ class RelatedProducts extends React.Component {
     this.goToIndexNoAnimation = this.goToIndexNoAnimation.bind(this);
     this.handleArrowLeft = this.handleArrowLeft.bind(this);
     this.handleArrowRight = this.handleArrowRight.bind(this);
+    this.handleAllNav = this.handleAllNav.bind(this);
 
+  }
+
+  componentDidMount() {
+    this.handleAllNav();
+  }
+
+  handleAllNav() {
+    if (this.state.activeIndex === 0) {
+      this.setState({
+      navLeft: '1',
+      navMiddle: '.60',
+      navRight: '.60'
+      })
+    }
+    else if (this.state.activeIndex >= 6 && this.state.activeIndex <= 10) {
+      this.setState({
+        navLeft: '.60',
+        navMiddle: '1',
+        navRight: '.60'
+      })
+    } 
+    else if (this.state.activeIndex > 10) {
+      this.setState({
+        navLeft: '.60',
+        navMiddle: '.60',
+        navRight: '1'
+      })
+    }
   }
 
   handleArrowLeft(e) {
@@ -63,34 +92,36 @@ class RelatedProducts extends React.Component {
 
   changeOpacityLeft(e) {
     this.setState({
-      navLeft : '1',
-      navMiddle : '.60',
-      navRight : '.60'
+      navLeft: '1',
+      navMiddle: '.60',
+      navRight: '.60'
     })
   }
 
   changeOpacityMiddle(e) {
     this.setState({
-      navLeft : '.60',
-      navMiddle : '1',
-      navRight : '.60'
+      navLeft: '.60',
+      navMiddle: '1',
+      navRight: '.60'
     })
   }
 
   changeOpacityRight(e) {
     this.setState({
-      navLeft : '.60',
-      navMiddle : '.60',
-      navRight : '1'
+      navLeft: '.60',
+      navMiddle: '.60',
+      navRight: '1'
     })
   }
   
   onExiting() {
     this.animating = true;
+    this.handleAllNav();
   }
 
   onExited() {
     this.animating = false;
+    this.handleAllNav();
   }
 
   next() {
@@ -98,6 +129,7 @@ class RelatedProducts extends React.Component {
     if (this.animating) return;
     const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
+    this.handleAllNav();
   }
 
   previous() {
@@ -105,11 +137,13 @@ class RelatedProducts extends React.Component {
     if (this.animating) return;
     const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
+    this.handleAllNav();
   }
 
   goToIndex(newIndex) {
     if (this.animating) return;
     this.setState({ activeIndex: newIndex });
+    this.handleAllNav();
   }
 
   goToIndexNoAnimation(i) {
