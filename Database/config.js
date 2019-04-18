@@ -1,14 +1,16 @@
-const {Client} = require('pg');
-const client = new Client({
-  host: 'relatedproducts.cz85drywbdns.us-east-2.rds.amazonaws.com',
+const Pool = require('pg').Pool;
+require('dotenv').config();
+
+const pool = new Pool({
+  user: process.env.POSTGRES_USERNAME,
+  host: 'localhost',
   port: 5432,
-  user: 'dlockliear',
-  database: 'related_products',
-  password: 'password'
-})
+  database: 'carousel',
+  password: process.env.POSTGRES_PASSWORD
+});
 
 const getProducts = (req, res) => {
-  client.query('SELECT * FROM carousel', (error, results) => {
+  pool.query('SELECT * FROM productinfo', (error, results) => {
     if (error) {
       throw error;
     }
@@ -16,10 +18,27 @@ const getProducts = (req, res) => {
   });
 }
 
-client.connect();
+const insertProduct = async (title, url, price) => {
+  const client = await pool.connect();
+  try {
+    const result = await client.query('INSERT INTO productinfo(title, photo_url, price) VALUES ($1, $2, $3)', [title, url, price])
+  } catch(error) {
+    console.log(error);
+  } finally {
+    client.release();
+  }
+}
 
-module.exports = {
-  client,
-  getProducts
-};
+const copyInsert = async () => {
+  const client = await pool.connect();
+  try {
+    await client.query(`COPY productinfo FROM '/Users/nicholasmiron/myProjects/hratx/SDC/carousel_service/Database/lotsOfData.csv' WITH(FORMAT CSV, DELIMITER ',')`)
+  } catch(error) {
+    console.log(error);
+  } finally {
+    client.release();
+  }
+}
+
+module.exports = { getProducts, insertProduct, copyInsert};
 

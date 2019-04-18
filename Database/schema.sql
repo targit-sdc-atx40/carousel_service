@@ -1,113 +1,20 @@
--- DROP DATABASE IF EXISTS related_products;
+-- DROP DATABASE IF EXISTS carousel;
 
--- CREATE DATABASE related_products;
+-- CREATE DATABASE carousel;
 
--- \C related_products;
+-- USE carousel;
 
-CREATE TABLE IF NOT EXISTS carousel (
-  sku SERIAL,
-  title VARCHAR(100) NOT NULL,
-  photo_url VARCHAR(200) NOT NULL,
-  price MONEY NOT NULL
+DROP TABLE IF EXISTS productInfo;
+
+CREATE TABLE IF NOT EXISTS productInfo (
+    id SERIAL,
+    title VARCHAR(100) NOT NULL,
+    photo_url VARCHAR(200) NOT NULL,
+    price float(2) NOT NULL
 );
 
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Incredible Fish','https://s3.amazonaws.com/targitphotos/001.jpg', 58.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Tasty Mouse','https://s3.amazonaws.com/targitphotos/002.jpg', 826.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Car','https://s3.amazonaws.com/targitphotos/003.jpg', 805.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Sleek Keyboard','https://s3.amazonaws.com/targitphotos/004.jpg', 204.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Rustic Chips','https://s3.amazonaws.com/targitphotos/005.jpg', 959.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Sleek Pizza','https://s3.amazonaws.com/targitphotos/006.jpg', 610.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Ergonomic Tuna','https://s3.amazonaws.com/targitphotos/007.jpg', 639.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Ergonomic Ball','https://s3.amazonaws.com/targitphotos/008.jpg', 665.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Refined Shirt','https://s3.amazonaws.com/targitphotos/009.jpg', 980.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Generic Hat','https://s3.amazonaws.com/targitphotos/010.jpeg', 876.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Computer','https://s3.amazonaws.com/targitphotos/011.jpg', 185.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Fantastic Gloves','https://s3.amazonaws.com/targitphotos/012.jpg', 605.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Small Salad','https://s3.amazonaws.com/targitphotos/013.jpg', 44.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Licensed Table','https://s3.amazonaws.com/targitphotos/014.jpg', 197.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Incredible Chicken','https://s3.amazonaws.com/targitphotos/015.jpg', 645.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Gorgeous Sausages','https://s3.amazonaws.com/targitphotos/016.jpeg', 906.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Practical Chair','https://s3.amazonaws.com/targitphotos/017.jpg', 393.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Sleek Cheese','https://s3.amazonaws.com/targitphotos/018.jpg', 692.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Unbranded Soap','https://s3.amazonaws.com/targitphotos/019.jpeg', 225.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handmade Pants','https://s3.amazonaws.com/targitphotos/020.jpg', 922.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Generic Towels','https://s3.amazonaws.com/targitphotos/021.jpeg', 870.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Licensed Bacon','https://s3.amazonaws.com/targitphotos/022.jpeg', 902.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Licensed Shoes','https://s3.amazonaws.com/targitphotos/023.jpeg', 159.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Incredible Fish','https://s3.amazonaws.com/targitphotos/024.jpg', 942.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Fantastic Mouse','https://s3.amazonaws.com/targitphotos/025.jpg', 123.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handcrafted Car','https://s3.us-east-2.amazonaws.com/targitproducts/26_handcrafted_car.jpg', 303.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handmade Keyboard','https://s3.us-east-2.amazonaws.com/targitproducts/27_handmade_keyboard.jpg', 409.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Small Chips','https://s3.us-east-2.amazonaws.com/targitproducts/28_small_chips.jpeg', 419.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Sleek Pizza','https://s3.us-east-2.amazonaws.com/targitproducts/29_sleek_pizza.jpg', 152.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Sleek Tuna','https://s3.us-east-2.amazonaws.com/targitproducts/30_sleek_tuna.webp', 628.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Awesome Ball','https://s3.us-east-2.amazonaws.com/targitproducts/31_awesome_ball.jpg', 154.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Generic Shirt','https://s3.us-east-2.amazonaws.com/targitproducts/32_generic+shirt.jpg', 836.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handcrafted Hat','https://s3.us-east-2.amazonaws.com/targitproducts/33_handcrafted_hat.jpg', 219.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Unbranded Computer','https://s3.us-east-2.amazonaws.com/targitproducts/34_unbranded_computer.jpg', 98.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Gloves','https://s3.us-east-2.amazonaws.com/targitproducts/35_intelligent_glove.jpeg', 176.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Unbranded Salad','https://s3.us-east-2.amazonaws.com/targitproducts/36_unbranded_salad.jpg', 344.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Table','https://s3.us-east-2.amazonaws.com/targitproducts/37_intelligent_table.jpg', 206.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Rustic Chicken','https://s3.us-east-2.amazonaws.com/targitproducts/38_rustic_chicken.jpg', 297.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Sausages','https://s3.us-east-2.amazonaws.com/targitproducts/39_intelligent_sausages.jpg', 988.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Rustic Chair','https://s3.us-east-2.amazonaws.com/targitproducts/40_rustic_chair.jpeg', 243.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Tasty Cheese','https://s3.us-east-2.amazonaws.com/targitproducts/41_tasty_cheese.jpg', 601.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Fantastic Soap','https://s3.us-east-2.amazonaws.com/targitproducts/42_fantastic_soap.jpg', 958.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Pants','https://s3.us-east-2.amazonaws.com/targitproducts/43_intelligent_pants.jpg', 942.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Licensed Towels','https://s3.us-east-2.amazonaws.com/targitproducts/44_licensed_towel.jpg', 838.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Ergonomic Bacon','https://s3.us-east-2.amazonaws.com/targitproducts/45_ergonomic_bacon+.jpg', 997.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Gorgeous Shoes','https://s3.us-east-2.amazonaws.com/targitproducts/46_gorgeous_shoes.jpg', 887.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Fish','https://s3.us-east-2.amazonaws.com/targitproducts/47_intelligent_fish.jpg', 291.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Refined Mouse','https://s3.us-east-2.amazonaws.com/targitproducts/48_refined_mouse.jpeg', 830.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Ergonomic Car','https://s3.us-east-2.amazonaws.com/targitproducts/49_ergonomic_car.jpeg', 62.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Keyboard','https://s3.amazonaws.com/targitphotos/051.jpeg', 238.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Generic Chips','https://s3.amazonaws.com/targitphotos/052.jpg', 21.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Incredible Pizza','https://s3.amazonaws.com/targitphotos/053.jpg', 890.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Tasty Tuna','https://s3.amazonaws.com/targitphotos/054.jpg', 186.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Practical Ball','https://s3.amazonaws.com/targitphotos/055.jpg', 918.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Refined Shirt','https://s3.amazonaws.com/targitphotos/056.jpg', 337.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Hat','https://s3.amazonaws.com/targitphotos/057.jpg', 67.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Sleek Computer','https://s3.amazonaws.com/targitphotos/058.jpg', 693.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handmade Gloves','https://s3.amazonaws.com/targitphotos/059.jpg', 67.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Refined Salad','https://s3.amazonaws.com/targitphotos/060.jpg', 785.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Awesome Table','https://s3.amazonaws.com/targitphotos/061.jpg', 831.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Ergonomic Chicken','https://s3.amazonaws.com/targitphotos/062.jpg', 212.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Sleek Sausages','https://s3.amazonaws.com/targitphotos/063.jpg', 401.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Ergonomic Chair','https://s3.amazonaws.com/targitphotos/064.jpg', 913.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Licensed Cheese','https://s3.amazonaws.com/targitphotos/065.jpg', 253.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Soap','https://s3.amazonaws.com/targitphotos/066.jpg', 765.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handcrafted Pants','https://s3.amazonaws.com/targitphotos/067.jpg', 93.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Unbranded Towels','https://s3.amazonaws.com/targitphotos/068.jpg', 600.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Gorgeous Bacon','https://s3.amazonaws.com/targitphotos/069.jpg', 537.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Practical Shoes','https://s3.amazonaws.com/targitphotos/070.jpg', 237.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Licensed Fish','https://s3.amazonaws.com/targitphotos/071.jpg', 382.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Ergonomic Mouse','https://s3.amazonaws.com/targitphotos/072.jpg', 165.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Incredible Car','https://s3.amazonaws.com/targitphotos/073.jpeg', 516.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Licensed Keyboard','https://s3.amazonaws.com/targitphotos/074.jpg', 719.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Awesome Chips','https://s3.amazonaws.com/targitphotos/075.jpg', 743.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Intelligent Pizza','https://s3.amazonaws.com/targitphotos/075.5.jpg', 694.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Practical Tuna','https://s3.us-east-2.amazonaws.com/cartphotos/76.jpg', 249.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Ergonomic Ball','https://s3.us-east-2.amazonaws.com/cartphotos/77.jpg', 559.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Awesome Shirt','https://s3.us-east-2.amazonaws.com/cartphotos/78.jpg', 624.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Refined Hat','https://s3.us-east-2.amazonaws.com/cartphotos/79.png', 494.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Practical Computer','https://s3.us-east-2.amazonaws.com/cartphotos/80.png', 865.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Rustic Gloves','https://s3.us-east-2.amazonaws.com/cartphotos/81.jpg', 399.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Tasty Salad','https://s3.us-east-2.amazonaws.com/cartphotos/82.jpg', 788.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Fantastic Table','https://s3.us-east-2.amazonaws.com/cartphotos/83.jpg', 695.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Tasty Chicken','https://s3.us-east-2.amazonaws.com/cartphotos/84.jpg', 277.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handcrafted Sausages','https://s3.us-east-2.amazonaws.com/cartphotos/85.png', 175.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Gorgeous Chair','https://s3.us-east-2.amazonaws.com/cartphotos/86.jpeg', 195.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Small Cheese','https://s3.us-east-2.amazonaws.com/cartphotos/87.jpg', 952.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handmade Soap','https://s3.us-east-2.amazonaws.com/cartphotos/88.jpg', 362.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Generic Pants','https://s3.us-east-2.amazonaws.com/cartphotos/89.jpeg', 676.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Incredible Towels','https://s3.us-east-2.amazonaws.com/cartphotos/90.jpeg', 534.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Generic Bacon','https://s3.us-east-2.amazonaws.com/cartphotos/91.jpg', 735.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Gorgeous Shoes','https://s3.us-east-2.amazonaws.com/cartphotos/92.jpg', 12.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Handmade Fish','https://s3.us-east-2.amazonaws.com/cartphotos/93.jpg', 303.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Rustic Mouse','https://s3.us-east-2.amazonaws.com/cartphotos/94.jpg', 6.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Small Car','https://s3.us-east-2.amazonaws.com/cartphotos/95.jpg', 676.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Incredible Keyboard','https://s3.us-east-2.amazonaws.com/cartphotos/96.jpg', 718.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Rustic Chips','https://s3.us-east-2.amazonaws.com/cartphotos/97.jpg', 574.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Refined Pizza','https://s3.us-east-2.amazonaws.com/cartphotos/98.jpg', 20.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Fantastic Tuna','https://s3.us-east-2.amazonaws.com/cartphotos/99.jpg', 221.00);
-  INSERT INTO carousel (title, photo_url, price) VALUES ('Gorgeous Ball','https://s3.us-east-2.amazonaws.com/cartphotos/77.jpg', 898.00); 
+
+-- CREATE UNIQUE INDEX "productInfo_pkey" ON "productInfo"(id int4_ops);
+-- CREATE UNIQUE INDEX "productInfo_sku_key" ON "productInfo"(sku int4_ops);
+
+-- INSERT INTO productInfo (title, photo_url, price) VALUES ('This worked', 'hello.world.dom', 87.88);
