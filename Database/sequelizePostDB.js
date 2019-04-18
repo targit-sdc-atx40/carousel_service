@@ -31,7 +31,8 @@ Products.sync({force: true});
 
 const batchInsert = (arr) => {
   Products.bulkCreate(arr)
-  .then((results) => console.log('done'))
+  .then(results => console.log('done'))
+  .catch(err => console.log(err))
 }
 
 module.exports = {batchInsert}
