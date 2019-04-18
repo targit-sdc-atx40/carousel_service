@@ -1,6 +1,7 @@
 const express = require('express');
 let app = express();
-const port = 3004;
+const port = process.env.PORT || 3004;
+// const db = require('../Database/index.js');
 const db = require('../Database/config.js');
 
 app.use(express.static('./dist'));
@@ -12,13 +13,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/related-products', db.getProducts);
-
-app.get('/insertinto', (req, res) => {
-  db.insertProduct('hell', 'im a genius.com', 100000);
-  res.send('good')
-}) 
+// app.get('/related-products', db.getProducts);
 
 app.listen(port, () => {
-  console.log(`Silently awaiting orders on port ${port}`);
+  console.log(`Listening on port ${port}`);
 })
