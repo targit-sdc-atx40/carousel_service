@@ -29,5 +29,16 @@ const insertProduct = async (title, url, price) => {
   }
 }
 
-module.exports = { getProducts, insertProduct};
+const copyInsert = async () => {
+  const client = await pool.connect();
+  try {
+    await client.query(`COPY productinfo FROM '/Users/nicholasmiron/myProjects/hratx/SDC/carousel_service/Database/lotsOfData.csv' WITH(FORMAT CSV, DELIMITER ',')`)
+  } catch(error) {
+    console.log(error);
+  } finally {
+    client.release();
+  }
+}
+
+module.exports = { getProducts, insertProduct, copyInsert};
 

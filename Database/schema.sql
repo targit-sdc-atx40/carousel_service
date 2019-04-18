@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS productInfo (
     id SERIAL,
     title VARCHAR(100) NOT NULL,
     photo_url VARCHAR(200) NOT NULL,
-    price MONEY NOT NULL
+    price float(2) NOT NULL
 );
 
 
