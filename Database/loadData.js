@@ -15,7 +15,7 @@ const buffer = (limit, cb) => {
 
   lineReader.on('line', (chunk) => {
     let split = chunk.split(',');
-    chunks.push({productId: split[0], title: split[1], photo_url: split[2], price: parseFloat(split[3])});
+    chunks.push({_id: parseInt(split[0]), title: split[1], photo_url: split[2], price: parseFloat(split[3])});
     if (chunks.length >= limit) {
       count++;
       console.log('Lines Read:', limit * count)
@@ -42,8 +42,6 @@ const buffer = (limit, cb) => {
 // copyInsert();
 
 //Uncomment for batch insert with mongoDB
-buffer(50000, (data, doneReading) => {
-  // if (data.length > 0) {
-    batchInsert(data, doneReading);
-  // }
-})
+// buffer(50000, (data, doneReading) => {
+//     batchInsert(data, doneReading);
+// })
