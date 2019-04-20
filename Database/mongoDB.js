@@ -9,7 +9,7 @@ mongoose.connect(uri, {useNewUrlParser: true}, (err, db) => {
 });
 
 const dbSchema = mongoose.Schema({
-  product_id: 'Number',
+  _id: 'Number',
   title: 'String',
   photo_url: 'String',
   price: 'Number'
@@ -18,6 +18,8 @@ const dbSchema = mongoose.Schema({
 const Carousel = mongoose.model('carouselProducts', dbSchema);
 
 const getProducts = () => Carousel.find().limit(100);
+
+const getById = (productId) => Carousel.findOne({_id: productId});
 
 const batchInsert = (batchArr, doneReading) => {
   if(!doneReading) {
@@ -33,4 +35,4 @@ const batchInsert = (batchArr, doneReading) => {
   }
 };
 
-module.exports = {batchInsert, getProducts};
+module.exports = {batchInsert, getProducts, getById};
