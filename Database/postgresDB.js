@@ -18,6 +18,18 @@ const getProducts = (req, res) => {
   });
 }
 
+const getById = async (productId) => {
+  const client = await pool.connect();
+  try {
+    client.query('SELECT * FROM productinfo WHERE id = $1', [productId])
+
+  } catch(error) {
+    
+  } finally {
+    client.release();
+  }
+}
+
 const insertProduct = async (title, url, price) => {
   const client = await pool.connect();
   try {

@@ -29,6 +29,7 @@
     "faker": "^4.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.7.1",
     "morgan": "^1.9.1",
     "newrelic": "^5.6.4",
     "nodemon": "^1.18.10",
@@ -38,13 +39,14 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "reactstrap": "^7.1.0",
+    "supertest": "^4.0.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "tests": "jest --runInBand --detectOpenHandles --forceExit",
     "build": "webpack --mode production",
-    "start": "nodemon --require newrelic server/server.js",
+    "start": "nodemon --require newrelic server/index.js",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "deploy": "pm2 deploy ecosystem.config.js production"
   },
@@ -58,5 +60,13 @@
   "bugs": {
     "url": "https://github.com/targitatx/carousel_service/issues"
   },
-  "homepage": "https://github.com/targitatx/carousel_service#readme"
+  "homepage": "https://github.com/targitatx/carousel_service#readme",
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "./src/setupTests.js"
+    ]
+  }
 }

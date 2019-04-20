@@ -1,9 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
-const port = process.env.PORT || 3004;
-const db = require('../Database/postgresDB.js');
+// const db = require('../Database/postgresDB.js');
 // const db = require('../Database/sequelizePostDB.js');
-// const db = require('../Database/mongoDB.js');
+const db = require('../Database/mongoDB.js');
 require('newrelic');
 
 let app = express();
@@ -19,8 +18,8 @@ app.use(function(req, res, next) {
 });
 
 app.get('/related-products', (req, res) => {
-  db.getProducts()
-  .then(results => {
+  db.getProducts(100)
+  .then(results => {  
     res.send(results);
   })
   .catch(err => {
@@ -31,17 +30,22 @@ app.get('/related-products', (req, res) => {
 
 app.get('/api/products/id', (req, res) => {
   const productId = parseInt(req.query.id)
-  let startAtFront = productId < 5000000 ? 1 : -1
-  db.getById(productId, startAtFront)
-  .then(results => {
-    res.send(results);
-  })
-  .catch(err => {
-    console.log('Failed to get by Id', err);
-    res.sendStatus(404);
-  })
+  if (isNaN(productId)) {
+    res.send(400);
+  } else {
+    let startAtFront = productId < 5000000 ? 1 : -1
+    db.getById(productId, startAtFront)
+    .then(results => {
+      if (!Array.isArray(results)) results = [results];
+      if (results.length === 0 || results[0] === null) res.sendStatus(204);
+      else res.send(results);
+    })
+    .catch(err => {
+      console.log('Failed to get by Id', err);
+      res.sendStatus(204);
+    })
+  }
 })
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-})
+
+module.exports = app;
