@@ -4,7 +4,7 @@ const path = require('path');
 var DIST_DIR = path.join(__dirname, './dist');
 
 module.exports = {
-  watch: true,
+  // watch: true,
   entry: './src/js/components/container/FormContainer.jsx',
   output: {
     filename: 'bundle.js',
