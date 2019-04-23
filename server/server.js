@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const compression = require('compression');
+const path = require('path');
 // const db = require('../Database/postgresDB.js');
 const db = require('../Database/sequelizePostDB.js');
 // const db = require('../Database/mongoDB.js');
@@ -39,6 +40,10 @@ app.get('/api/products/id', (req, res, next) => {
     })
     .catch(next)
   }
+})
+
+app.get('/loaderio-afb340a4c345bf79ee8bf5fabde1685b', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../', 'loaderio-afb340a4c345bf79ee8bf5fabde1685b.txt'));
 })
 
 module.exports = app;
