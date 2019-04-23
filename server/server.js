@@ -1,15 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
+const compression = require('compression');
 // const db = require('../Database/postgresDB.js');
-// const db = require('../Database/sequelizePostDB.js');
-const db = require('../Database/mongoDB.js');
+const db = require('../Database/sequelizePostDB.js');
+// const db = require('../Database/mongoDB.js');
 require('newrelic');
 
 let app = express();
 
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
+app.use(compression())
 app.use(express.static('./dist'));
-app.use(express.json({extended: false}));
+app.use(express.json({extended: true}));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -17,35 +19,27 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/related-products', (req, res) => {
+app.get('/related-products', (req, res, next) => {
   db.getProducts(100)
   .then(results => {  
     res.send(results);
   })
-  .catch(err => {
-    console.log('Failed to get 100', err);
-    res.sendStatus(404);
-  })
+  .catch(next)
 });
 
-app.get('/api/products/id', (req, res) => {
+app.get('/api/products/id', (req, res, next) => {
   const productId = parseInt(req.query.id)
   if (isNaN(productId)) {
     res.send(400);
   } else {
-    let startAtFront = productId < 5000000 ? 1 : -1
-    db.getById(productId, startAtFront)
+    db.getById(productId)
     .then(results => {
       if (!Array.isArray(results)) results = [results];
       if (results.length === 0 || results[0] === null) res.sendStatus(204);
       else res.send(results);
     })
-    .catch(err => {
-      console.log('Failed to get by Id', err);
-      res.sendStatus(204);
-    })
+    .catch(next)
   }
 })
-
 
 module.exports = app;

@@ -1,8 +1,10 @@
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+require('dotenv').config();
 
-const sequelize = new Sequelize('postgres', process.env.POSTGRES_USERNAME, process.env.POSTGRESS_PASSWORD, {
-  host: 'localhost',
+const sequelize = new Sequelize('postgres', process.env.POSTGRES_USERNAME, process.env.POSTGRES_PASSWORD, {
+  host: '18.220.254.114',
+  port: 5432,
   dialect: 'postgres',
   define:{
     timestamps:false
@@ -38,9 +40,13 @@ const Products = sequelize.define('carouselproducts', {
   }
 })
 
-const getProducts = (productId) => Products.findAll({where: {
-  _id: {[Op.between]: [productId, productId + 99]}
-}});
+const getProducts = (productId) => Products.findAll({
+  where:{
+    _id: {
+      [Op.between]: [productId, productId + 99]}
+  }, 
+  raw: true
+});
 
 const getById = (productId) => Products.findAll({where: {
   _id: productId
@@ -48,7 +54,7 @@ const getById = (productId) => Products.findAll({where: {
 
 const batchInsert = (arr) => {
   Products.bulkCreate(arr)
-  .then(results => console.log('done'))
+  .then(() => console.log('done'))
   .catch(err => console.log(err))
 };
 
