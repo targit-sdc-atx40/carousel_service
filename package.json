@@ -47,7 +47,6 @@
   "scripts": {
     "tests": "jest --runInBand --detectOpenHandles --forceExit",
     "build": "webpack --mode production",
-    "build-one": "webpack --config ./webpack.config.js --mode production",
     "start": "node server/index.js",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "deploy": "pm2 deploy ecosystem.config.js production"

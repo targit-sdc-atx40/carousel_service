@@ -11,7 +11,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:targit-sdc-atx40/carousel_service.git',
       path: '/home/ubuntu/carouselService',
-      'post-deploy': 'npm install && npm run build-one && pm2 startOrRestart ecosystem.config.js'
+      'post-deploy': 'npm install && npm run build && pm2 startOrRestart ecosystem.config.js'
     }
   }
 }
