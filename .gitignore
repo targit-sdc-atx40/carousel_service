@@ -4,5 +4,3 @@
 Database/lotsOfData.csv
 Database/lotsOfData.txt
 dist/bundle.js
-newrelic.js
-newrelic_agent.log

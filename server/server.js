@@ -4,7 +4,6 @@ const compression = require('compression');
 // const db = require('../Database/postgresDB.js');
 const db = require('../Database/sequelizePostDB.js');
 // const db = require('../Database/mongoDB.js');
-require('newrelic');
 
 let app = express();
 
