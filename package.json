@@ -47,7 +47,7 @@
   "scripts": {
     "tests": "jest --runInBand --detectOpenHandles --forceExit",
     "build": "webpack --mode production",
-    "start": "nodemon --require newrelic server/index.js",
+    "start": "node server/index.js",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "deploy": "pm2 deploy ecosystem.config.js production"
   },
