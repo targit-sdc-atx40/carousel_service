@@ -40,7 +40,7 @@ const Products = sequelize.define('carouselproducts', {
   }
 })
 
-const getProducts = (productId) => Products.findAll({
+const getProducts = async (productId) => await Products.findAll({
   where:{
     _id: {
       [Op.between]: [productId, productId + 99]}

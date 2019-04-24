@@ -21,8 +21,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/related-products', (req, res, next) => {
-  let randId = Math.floor((Math.random() * 10000000) + 1);
-  db.getProducts(randId)
+  db.getProducts(Math.floor((Math.random() * 10000000) + 1))
   .then(results => {    
     res.send(results);
   })
