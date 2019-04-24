@@ -8,9 +8,9 @@ const morgan = require('morgan');
 const fs = require('fs');
 
 let app = express();
-app.use(morgan("combined", { stream: fs.createWriteStream('./access.log', {flags: 'a'}) }));
+app.use(morgan("combined", { stream: fs.createWriteStream(path.join(__dirname, '/access.log'), {flags: 'a'}) }));
 
-app.use(compression())
+app.use(compression({level: 1}))
 app.use(express.static('./dist'));
 app.use(express.json({extended: true}));
 
