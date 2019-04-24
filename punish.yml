@@ -3,10 +3,10 @@ config:
   http: 
     pool: 20
   phases:
-    - duration: 10
-      arrivalRate: 10
-      rampTo: 100
-      name: "Warm up the application"
+    # - duration: 10
+    #   arrivalRate: 10
+    #   rampTo: 100
+    #   name: "Warm up the application"
     - duration: 60
       arrivalRate: 100
       name: "Sustained load"
@@ -15,5 +15,5 @@ scenarios:
   - name: "Get product"
     flow:
       - get:
-          url: "/api/products/id?id={{$randomNumber(1,10000000)}}"
-          # url: "/related-products"
+          # url: "/api/products/id?id={{$randomNumber(1,10000000)}}"
+          url: "/related-products"

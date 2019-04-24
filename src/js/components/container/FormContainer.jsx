@@ -22,7 +22,7 @@ class FormContainer extends Component {
   
 
   componentDidMount() {
-    axios.get('http://ec2-18-221-232-106.us-east-2.compute.amazonaws.com/related-products')
+    axios.get('18.221.232.106/related-products')
     .then(res => {
       const relatedProducts = res.data;
       this.setState({
