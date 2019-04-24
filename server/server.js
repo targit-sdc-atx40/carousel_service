@@ -4,8 +4,11 @@ const path = require('path');
 // const db = require('../Database/postgresDB.js');
 const db = require('../Database/sequelizePostDB.js');
 // const db = require('../Database/mongoDB.js');
+const morgan = require('morgan');
+const fs = require('fs');
 
 let app = express();
+app.use(morgan("combined", { stream: fs.createWriteStream('./access.log', {flags: 'a'}) }));
 
 app.use(compression())
 app.use(express.static('./dist'));
