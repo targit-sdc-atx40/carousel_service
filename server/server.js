@@ -1,5 +1,4 @@
 const express = require('express');
-const morgan = require('morgan');
 const compression = require('compression');
 const path = require('path');
 // const db = require('../Database/postgresDB.js');
@@ -8,7 +7,6 @@ const db = require('../Database/sequelizePostDB.js');
 
 let app = express();
 
-// app.use(morgan('tiny'));
 app.use(compression())
 app.use(express.static('./dist'));
 app.use(express.json({extended: true}));
@@ -20,8 +18,9 @@ app.use(function(req, res, next) {
 });
 
 app.get('/related-products', (req, res, next) => {
-  db.getProducts(100)
-  .then(results => {  
+  let randId = Math.floor((Math.random() * 10000000) + 1);
+  db.getProducts(randId)
+  .then(results => {    
     res.send(results);
   })
   .catch(next)
